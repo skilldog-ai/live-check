@@ -18,3 +18,5 @@ jobs:
         with:
           name: live-check-artifact
           path: live-check.txt
+      # keeps the run alive ~45 s so the live check can exercise cancel / force-cancel
+      - run: sleep 45
