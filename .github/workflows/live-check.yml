@@ -1,0 +1,20 @@
+name: live-check
+on:
+  workflow_dispatch:
+    inputs:
+      note:
+        description: free text carried into the run
+        required: false
+        default: skilldog live check
+  repository_dispatch:
+    types: [live_check]
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "SkillDog live check ${{ github.event.inputs.note }}"
+      - run: echo "hello" > live-check.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: live-check-artifact
+          path: live-check.txt
